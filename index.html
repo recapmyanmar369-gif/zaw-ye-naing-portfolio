@@ -2,1012 +2,493 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10091B">
-  <title>Zaw Ye Naing | Portfolio</title>
-
-  <style>
-    :root {
-      --bg: #10091B;
-      --card: #21142F;
-      --accent: #B875FF;
-      --text: #FFFFFF;
-      --muted: #B8AFC3;
-      --border: #49315F;
-      --accent-text: #10091B;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-      transition: background .25s, color .25s;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button, input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    .container {
-      width: min(100% - 32px, 900px);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: var(--accent);
-      color: var(--accent-text);
-      font-size: 23px;
-    }
-
-    .toolbar {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .menu-btn {
-      display: none;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding-bottom: 14px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .btn {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 14px;
-      background: var(--card);
-      color: var(--text);
-      font-size: 13px;
-      font-weight: bold;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 7px;
-      transition: .2s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--accent-text);
-    }
-
-    .btn:hover {
-      filter: brightness(1.12);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 65px 0 48px;
-      background: radial-gradient(
-        ellipse at top,
-        color-mix(in srgb, var(--accent) 14%, transparent),
-        transparent 70%
-      );
-    }
-
-    .eyebrow {
-      display: inline-block;
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 6px 13px;
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 23px;
-    }
-
-    .avatar {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 22px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-      font-size: 38px;
-      font-weight: bold;
-      overflow: hidden;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    h1 {
-      font-size: clamp(30px, 8vw, 48px);
-      line-height: 1.25;
-      margin-bottom: 16px;
-      overflow-wrap: anywhere;
-    }
-
-    .accent {
-      color: var(--accent);
-    }
-
-    .hero p {
-      max-width: 480px;
-      margin: 0 auto 25px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    section {
-      padding: 38px 0;
-    }
-
-    .section-title {
-      font-size: 25px;
-      margin-bottom: 8px;
-    }
-
-    .section-desc {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 22px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      min-width: 0;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 12px;
-      overflow-wrap: anywhere;
-    }
-
-    .card h3 {
-      color: var(--accent);
-      font-size: 17px;
-      margin-bottom: 9px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .tag {
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 5px 9px;
-      color: var(--accent);
-      font-size: 11px;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 12px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    /* ADMIN PANEL */
-
-    .admin {
-      display: none;
-      padding: 30px 0 55px;
-      min-height: 70vh;
-    }
-
-    .admin.open {
-      display: block;
-    }
-
-    .admin-heading {
-      margin-bottom: 22px;
-    }
-
-    .admin-heading h2 {
-      font-size: 27px;
-      color: var(--accent);
-    }
-
-    .admin-heading p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .admin-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-
-    .admin-card h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .admin-card > p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .theme-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .theme-option {
-      background: var(--bg);
-      border: 2px solid var(--border);
-      border-radius: 13px;
-      padding: 12px;
-      text-align: left;
-      color: var(--text);
-      min-width: 0;
-    }
-
-    .theme-option.selected {
-      border-color: var(--accent);
-    }
-
-    .swatches {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .swatch {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      border: 1px solid #ffffff35;
-    }
-
-    .theme-option strong {
-      display: block;
-      font-size: 12px;
-    }
-
-    .theme-option small {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .preview {
-      padding: 17px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      margin-bottom: 17px;
-    }
-
-    .preview-bar {
-      height: 7px;
-      border-radius: 10px;
-      background: var(--accent);
-      margin: 13px 0;
-      width: 65%;
-    }
-
-    .preview-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      color: var(--accent);
-      font-size: 13px;
-    }
-
-    .status {
-      color: var(--accent);
-      font-size: 12px;
-      margin-top: 12px;
-      overflow-wrap: anywhere;
-    }
-
-    .field {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin: 15px 0 7px;
-    }
-
-    .color-field {
-      width: 100%;
-      height: 48px;
-      padding: 4px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-    }
-
-    .admin-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .notice {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-top: 15px;
-    }
-
-    @media (max-width: 520px) {
-      .container {
-        width: calc(100% - 24px);
-      }
-
-      .navbar {
-        min-height: 65px;
-      }
-
-      .brand {
-        font-size: 12px;
-        letter-spacing: 0;
-      }
-
-      .logo {
-        width: 35px;
-        height: 35px;
-      }
-
-      .toolbar .btn {
-        padding: 8px 9px;
-        font-size: 11px;
-      }
-
-      .menu-btn {
-        display: inline-flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        padding-bottom: 12px;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 9px 3px;
-      }
-
-      .hero {
-        padding: 48px 0 35px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .theme-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .admin-card {
-        padding: 15px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      * {
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c0916">
+<title>Zaw Ye Naing | Admin</title>
+<style>
+:root{
+  --bg:#0c0916;--panel:#171126;--card:#211638;
+  --accent:#b875ff;--accent2:#7844ee;--text:#f7f2ff;
+  --muted:#aaa0bb;--border:#38264f;--danger:#ff5578;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,sans-serif;font-size:14px;line-height:1.6}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+outline:2px solid var(--accent);outline-offset:3px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.hidden{display:none!important}
+.app{max-width:620px;min-height:100dvh;margin:auto;
+padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.topbar{position:sticky;top:0;z-index:5;background:var(--bg);
+border-bottom:1px solid var(--border);padding:14px 17px}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:bold}
+.logo{width:42px;height:42px;border-radius:14px;
+display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:white;font-size:23px;box-shadow:0 0 24px #b875ff35}
+.brand small{display:block;color:var(--muted);font-size:11px;font-weight:normal}
+.iconbtn{width:42px;height:42px;border:1px solid var(--border);
+background:var(--panel);border-radius:13px;color:var(--text);font-size:20px}
+main{padding:20px 16px}
+.view{display:none}
+.view.active{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
+h1{font-size:25px;line-height:1.3;margin:0 0 6px}
+h2{font-size:18px;margin:0 0 12px}
+h3{font-size:15px;margin:0 0 7px}
+p{margin:0;color:var(--muted)}
+.sub{color:var(--muted);font-size:12px;margin-bottom:20px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{min-width:0;padding:16px;background:var(--card);
+border:1px solid var(--border);border-radius:19px;margin-bottom:13px}
+.staticon{width:39px;height:39px;display:grid;place-items:center;
+background:#b875ff19;color:var(--accent);border-radius:13px;font-size:20px}
+.statnum{font-size:25px;font-weight:bold;margin-top:9px}
+.statlabel{font-size:12px;color:var(--muted)}
+.btn{border:1px solid var(--border);background:var(--panel);
+color:var(--text);border-radius:12px;padding:11px 14px;
+font-weight:bold;font-size:12px;display:inline-flex;
+align-items:center;justify-content:center;gap:7px}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));
+border-color:transparent;color:white}
+.btn.danger{color:var(--danger);border-color:#ff557855}
+.btn.full{width:100%}
+.actions{display:flex;flex-wrap:wrap;gap:9px}
+.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.quick button{min-height:78px;text-align:left;justify-content:flex-start}
+.field{margin:14px 0}
+.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}
+.input{display:block;width:100%;padding:13px 12px;
+border:1px solid var(--border);border-radius:12px;
+background:var(--bg);color:var(--text);min-width:0}
+textarea.input{resize:vertical;min-height:100px}
+.hint{font-size:11px;color:var(--muted);margin-top:7px}
+.avatar{width:86px;height:86px;border-radius:50%;
+display:grid;place-items:center;overflow:hidden;
+border:2px solid var(--accent);background:var(--panel);
+color:var(--accent);font-size:32px;font-weight:bold;margin:0 auto 12px}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.profiletop{text-align:center;margin-bottom:20px}
+.project{display:flex;gap:12px;align-items:flex-start}
+.projecticon{width:55px;height:55px;flex-shrink:0;display:grid;
+place-items:center;border-radius:13px;background:var(--bg);font-size:24px}
+.projectinfo{flex:1;min-width:0}
+.projectinfo p{font-size:12px;overflow-wrap:anywhere}
+.projectactions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.projectactions .btn{padding:8px 10px}
+.themegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.theme{padding:12px;border-radius:14px;border:1px solid var(--border);
+background:var(--bg);color:var(--text);text-align:left;min-width:0}
+.theme.selected{border:2px solid var(--accent);padding:11px}
+.swatches{display:flex;gap:7px;margin-bottom:10px}
+.swatch{width:24px;height:24px;border-radius:50%;border:1px solid #ffffff30}
+.theme strong{font-size:12px;display:block}
+.theme small{font-size:10px;color:var(--muted)}
+.colorfield{height:45px;width:100%;padding:4px;border:1px solid var(--border);
+border-radius:10px;background:var(--panel)}
+.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+width:100%;max-width:620px;z-index:10;display:grid;
+grid-template-columns:repeat(5,minmax(0,1fr));
+padding:10px 7px calc(10px + env(safe-area-inset-bottom));
+background:#100c1beF;backdrop-filter:blur(18px);
+border-top:1px solid var(--border)}
+.navitem{background:transparent;border:0;color:var(--muted);
+font-size:10px;padding:6px 1px;display:flex;flex-direction:column;
+align-items:center;gap:4px;border-radius:12px}
+.navitem span{font-size:20px}
+.navitem.active{color:var(--accent);background:#b875ff16}
+.navitem.add span{width:42px;height:42px;margin-top:-20px;
+display:grid;place-items:center;border-radius:15px;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:white;font-size:25px;box-shadow:0 4px 20px #b875ff45}
+.notice{padding:12px;border-radius:12px;background:#b875ff10;
+color:var(--muted);font-size:11px;margin-top:12px}
+.status{font-size:12px;color:var(--accent);margin-top:10px;overflow-wrap:anywhere}
+hr{border:0;border-top:1px solid var(--border);margin:18px 0}
+@media(min-width:500px){main{padding:25px 22px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{
+animation:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-
 <body>
-
-<header>
-  <div class="container">
-    <div class="navbar">
-      <a href="#home" class="brand" id="brandLink">
-        <span class="logo">Z</span>
-        <span>ZAW YE NAING</span>
-      </a>
-
-      <div class="toolbar">
-        <button class="btn btn-primary" id="adminBtn"
-                type="button">⚙ Admin</button>
-        <button class="btn menu-btn" id="menuBtn"
-                type="button" aria-expanded="false">☰</button>
-      </div>
+<div class="app">
+<header class="topbar">
+  <div class="toprow">
+    <div class="brand">
+      <div class="logo">Z</div>
+      <div>Zaw Ye Naing<small>Portfolio Admin</small></div>
     </div>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <button class="iconbtn" id="previewBtn" aria-label="View website">↗</button>
   </div>
 </header>
 
-<main id="portfolio">
+<main>
+  <section class="view active" id="dashboard">
+    <h1>Dashboard</h1>
+    <p class="sub" id="welcome">Welcome back!</p>
+    <div class="grid">
+      <div class="card"><div class="staticon">▣</div>
+        <div class="statnum" id="projectCount">0</div>
+        <div class="statlabel">Total Projects</div></div>
+      <div class="card"><div class="staticon">◉</div>
+        <div class="statnum">Ready</div>
+        <div class="statlabel">Portfolio Status</div></div>
+      <div class="card"><div class="staticon">◐</div>
+        <div class="statnum" id="themeLabel">Purple</div>
+        <div class="statlabel">Current Theme</div></div>
+      <div class="card"><div class="staticon">✓</div>
+        <div class="statnum">Local</div>
+        <div class="statlabel">Storage Mode</div></div>
+    </div>
 
-  <section class="hero" id="home">
-    <div class="container">
-      <span class="eyebrow">WELCOME TO MY WORLD</span>
+    <h2 style="margin-top:20px">Quick Actions</h2>
+    <div class="quick">
+      <button class="btn" data-go="profile">♙ Edit Profile</button>
+      <button class="btn" data-go="projects">▣ Projects</button>
+      <button class="btn" data-go="themes">◈ Theme Settings</button>
+      <button class="btn" id="homePreview">↗ Website Preview</button>
+    </div>
+    <div class="notice">ဒီ Dashboard က သင့် Browser ထဲမှာ အချက်အလက်တွေ သိမ်းပါတယ်။ Online Database မချိတ်ရသေးပါ။</div>
+  </section>
 
-      <div class="avatar" id="avatar">
-        Z
+  <section class="view" id="profile">
+    <h1>Edit Profile</h1>
+    <p class="sub">Portfolio မှာ ပြသမယ့် အချက်အလက်များ</p>
+    <div class="card">
+      <div class="profiletop">
+        <div class="avatar" id="avatar">Z</div>
+        <p id="avatarCaption">Profile Preview</p>
       </div>
+      <div class="field"><label for="photo">Profile Image URL</label>
+        <input class="input" id="photo" placeholder="https://example.com/photo.jpg">
+        <p class="hint">အများမြင်နိုင်တဲ့ ပုံ URL ထည့်ပါ။</p></div>
+      <div class="field"><label for="name">Your Name</label>
+        <input class="input" id="name" maxlength="80" value="Zaw Ye Naing"></div>
+      <div class="field"><label for="title">Portfolio Title</label>
+        <input class="input" id="title" maxlength="100" value="Creative Portfolio"></div>
+      <div class="field"><label for="intro">Introduction</label>
+        <textarea class="input" id="intro" maxlength="500">မင်္ဂလာပါ။ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် Portfolio Website မှ ကြိုဆိုပါတယ်။</textarea></div>
+      <div class="field"><label for="about">About Me</label>
+        <textarea class="input" id="about" maxlength="1000">နည်းပညာနဲ့ Digital Content ဖန်တီးမှုတွေကို စိတ်ဝင်စားပါတယ်။</textarea></div>
+      <button class="btn primary full" id="saveProfile">Save Profile</button>
+      <p class="status" id="profileStatus" role="status"></p>
+    </div>
+  </section>
 
-      <h1>
-        <span id="heroName">Zaw Ye Naing</span><br>
-        <span class="accent" id="heroTitle">Creative Portfolio</span>
-      </h1>
-
-      <p id="heroIntro">
-        မင်္ဂလာပါ။ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် Website မှ
-        ကြိုဆိုပါတယ်။ ကျွန်တော့်ရဲ့ Projects နဲ့
-        ဖန်တီးမှုတွေကို ဒီနေရာမှာ လေ့လာနိုင်ပါတယ်။
-      </p>
-
+  <section class="view" id="projects">
+    <div class="row" style="margin-bottom:7px">
+      <h1>My Projects</h1>
+      <button class="btn primary" id="addProject">＋ Add</button>
+    </div>
+    <p class="sub">Project အသစ်ထည့်၊ ပြင်၊ ဖျက်နိုင်ပါတယ်။</p>
+    <div id="projectList"></div>
+    <div class="card hidden" id="projectForm">
+      <h2 id="formHeading">Add Project</h2>
+      <input type="hidden" id="projectId">
+      <div class="field"><label for="projectName">Project Name</label>
+        <input class="input" id="projectName" maxlength="100" placeholder="My Website"></div>
+      <div class="field"><label for="projectDesc">Description</label>
+        <textarea class="input" id="projectDesc" maxlength="500" placeholder="Project description"></textarea></div>
+      <div class="field"><label for="projectUrl">Project URL</label>
+        <input class="input" id="projectUrl" type="url" placeholder="https://example.com"></div>
       <div class="actions">
-        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
-        <a class="btn" href="#contact">Contact Me</a>
+        <button class="btn primary" id="saveProject">Save Project</button>
+        <button class="btn" id="cancelProject">Cancel</button>
       </div>
+      <p class="status" id="projectStatus" role="status"></p>
     </div>
   </section>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About <span class="accent">Me</span></h2>
-      <p class="section-desc">ကျွန်တော့်အကြောင်း</p>
-      <div class="card">
-        <h3>Who I Am</h3>
-        <p id="aboutText">
-          နည်းပညာ၊ Website Design နဲ့ Digital Content
-          ဖန်တီးမှုတွေကို စိတ်ဝင်စားသူတစ်ယောက်ပါ။
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">My <span class="accent">Skills</span></h2>
-      <p class="section-desc">ကျွမ်းကျင်မှုနဲ့ စိတ်ဝင်စားမှုများ</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Web Design</h3>
-          <p>Website နဲ့ Mobile UI Design</p>
-          <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Responsive UI</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>AI Content</h3>
-          <p>Digital Video နဲ့ AI Content ဖန်တီးမှု</p>
-          <div class="tags">
-            <span class="tag">AI Tools</span>
-            <span class="tag">Video Editing</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">My <span class="accent">Projects</span></h2>
-      <p class="section-desc">ကျွန်တော့်ရဲ့ လက်ရာများ</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Personal Portfolio</h3>
-          <p>ကိုယ်ပိုင် Website Project</p>
-          <div style="margin-top:15px">
-            <a class="btn btn-primary"
-               href="https://github.com/">View GitHub ↗</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Creative Video</h3>
-          <p>AI နဲ့ ဖန်တီးထားတဲ့ Video Content များ</p>
-          <div style="margin-top:15px">
-            <a class="btn" href="https://www.youtube.com/">
-              Watch Videos ↗
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
-      <p class="section-desc">ဆက်သွယ်ရန်</p>
+  <section class="view" id="themes">
+    <h1>Theme Settings</h1>
+    <p class="sub">Website အရောင်ကို ရွေးချယ်ပါ။</p>
+    <div class="themegrid" id="themeList"></div>
+    <div class="card" style="margin-top:16px">
+      <h2>Custom Colors</h2>
+      <div class="field"><label for="bgColor">Background</label>
+        <input class="colorfield" type="color" id="bgColor" value="#0c0916"></div>
+      <div class="field"><label for="accentColor">Accent</label>
+        <input class="colorfield" type="color" id="accentColor" value="#b875ff"></div>
+      <div class="field"><label for="cardColor">Card</label>
+        <input class="colorfield" type="color" id="cardColor" value="#211638"></div>
       <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/">GitHub ↗</a>
-        <a class="btn" href="https://www.youtube.com/">YouTube ↗</a>
+        <button class="btn primary" id="applyTheme">Apply Theme</button>
+        <button class="btn" id="resetTheme">Reset</button>
       </div>
+      <p class="status" id="themeStatus" role="status"></p>
     </div>
+    <div class="notice">Theme ပြောင်းလဲမှုကို ဒီ Browser ထဲမှာ သိမ်းထားပါမယ်။ Website အသုံးပြုသူအားလုံးထံ ပြောင်းဖို့ Database လိုပါတယ်။</div>
   </section>
 
+  <section class="view" id="settings">
+    <h1>Settings</h1>
+    <p class="sub">Data နဲ့ Website Settings</p>
+    <div class="card">
+      <h3>Export Backup</h3>
+      <p>Profile၊ Project နဲ့ Theme အချက်အလက်တွေကို JSON ဖိုင်အဖြစ် သိမ်းနိုင်ပါတယ်။</p>
+      <button class="btn primary full" id="exportData" style="margin-top:14px">↓ Export Backup</button>
+    </div>
+    <div class="card">
+      <h3>Import Backup</h3>
+      <p>ယခင် Export လုပ်ထားတဲ့ JSON ဖိုင်ကို ပြန်တင်နိုင်ပါတယ်။</p>
+      <input class="input" style="margin:14px 0" id="importFile" type="file" accept=".json,application/json">
+      <button class="btn full" id="importData">↑ Import Backup</button>
+      <p class="status" id="backupStatus" role="status"></p>
+    </div>
+    <div class="card">
+      <h3>Reset Local Data</h3>
+      <p>သိမ်းထားတဲ့ Profile၊ Projects နဲ့ Theme ကို Default အဖြစ် ပြန်ထားပါမယ်။</p>
+      <button class="btn danger full" id="clearData" style="margin-top:14px">Reset All Data</button>
+    </div>
+    <div class="notice">လုံခြုံရေး: ဒီ Demo မှာ Admin Login မပါဝင်ပါ။ GitHub ပေါ်က Public Website မှာ အရေးကြီးတဲ့အချက်အလက်တွေကို မသိမ်းပါနဲ့။</div>
+  </section>
 </main>
 
-<!-- ADMIN DASHBOARD -->
-<section class="admin" id="adminPanel">
-  <div class="container">
-
-    <div class="admin-heading">
-      <h2>⚙ Admin Dashboard</h2>
-      <p>Website Theme နဲ့ Profile ကို စီမံပါ</p>
-    </div>
-
-    <div class="admin-card">
-      <h3>🎨 Website Color Theme</h3>
-      <p>အရောင်ရွေးပြီး Apply Theme နှိပ်ပါ။</p>
-
-      <div class="theme-list" id="themeList"></div>
-
-      <div class="preview">
-        <strong>Live Preview</strong>
-        <div class="preview-bar"></div>
-        <div class="preview-card">
-          Zaw Ye Naing — Preview Card
-        </div>
-      </div>
-
-      <h3>Custom Colors</h3>
-
-      <label class="field" for="bgColor">Background Color</label>
-      <input class="color-field" type="color"
-             id="bgColor" value="#10091B">
-
-      <label class="field" for="accentColor">Accent Color</label>
-      <input class="color-field" type="color"
-             id="accentColor" value="#B875FF">
-
-      <label class="field" for="cardColor">Card Color</label>
-      <input class="color-field" type="color"
-             id="cardColor" value="#21142F">
-
-      <div class="admin-actions" style="margin-top:18px">
-        <button class="btn btn-primary" id="applyBtn" type="button">
-          ✓ Apply Theme
-        </button>
-        <button class="btn" id="resetBtn" type="button">
-          ↺ Reset
-        </button>
-      </div>
-
-      <p class="status" id="themeStatus" role="status" aria-live="polite">
-        Neon Purple Theme
-      </p>
-    </div>
-
-    <div class="admin-card">
-      <h3>✍ Edit Profile</h3>
-      <p>Portfolio မှာ ပြသမယ့် အချက်အလက်များ</p>
-
-      <label class="field" for="nameInput">Your Name</label>
-      <input class="field" id="nameInput"
-             type="text" maxlength="80"
-             value="Zaw Ye Naing">
-
-      <label class="field" for="titleInput">Portfolio Title</label>
-      <input class="field" id="titleInput"
-             type="text" maxlength="100"
-             value="Creative Portfolio">
-
-      <label class="field" for="introInput">Introduction</label>
-      <input class="field" id="introInput"
-             type="text" maxlength="300"
-             value="မင်္ဂလာပါ။ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် Website မှ ကြိုဆိုပါတယ်။">
-
-      <label class="field" for="aboutInput">About Me</label>
-      <input class="field" id="aboutInput"
-             type="text" maxlength="300"
-             value="နည်းပညာ၊ Website Design နဲ့ Digital Content ဖန်တီးမှုတွေကို စိတ်ဝင်စားသူတစ်ယောက်ပါ။">
-
-      <div class="admin-actions" style="margin-top:18px">
-        <button class="btn btn-primary" id="saveProfileBtn" type="button">
-          Save Profile
-        </button>
-      </div>
-
-      <p class="notice">
-        Profile ပြင်ဆင်မှုများကို ဒီ Browser ထဲမှာ သိမ်းထားပါမယ်။
-      </p>
-    </div>
-
-    <div class="admin-card">
-      <h3>⚠ Storage Information</h3>
-      <p>
-        Theme နဲ့ Profile ကို ဒီ Browser ရဲ့ localStorage ထဲမှာ သိမ်းထားပါတယ်။
-        GitHub ဖိုင်ကို တခြားသူတွေဝင်ကြည့်တဲ့အခါ သူတို့ Browser ထဲမှာ
-        ဒီအရောင်ကို အလိုအလျောက် ပြောင်းပေးမှာ မဟုတ်ပါဘူး။
-      </p>
-      <p>
-        Admin ခလုတ်ကို Password မထည့်ဘဲ ဖွင့်နိုင်တဲ့ Demo ဖြစ်ပါတယ်။
-        အများသုံး Website အတွက် လုံခြုံသော Login စနစ်ကို ထပ်တည်ဆောက်ပါ။
-      </p>
-    </div>
-
-    <button class="btn" id="closeAdminBtn" type="button">
-      ← Back to Website
-    </button>
-  </div>
-</section>
-
-<footer>
-  © <span id="year"></span>
-  <span class="accent" id="footerName">Zaw Ye Naing</span>.
-  All rights reserved.
-</footer>
+<nav class="bottomnav" aria-label="Main navigation">
+  <button class="navitem active" data-go="dashboard"><span>⌂</span>Home</button>
+  <button class="navitem" data-go="profile"><span>♙</span>Profile</button>
+  <button class="navitem add" id="navAdd" aria-label="Add project"><span>＋</span></button>
+  <button class="navitem" data-go="projects"><span>▣</span>Projects</button>
+  <button class="navitem" data-go="themes"><span>⚙</span>Themes</button>
+</nav>
+</div>
 
 <script>
-  const $ = id => document.getElementById(id);
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const KEYS={profile:"zyn-profile-v1",projects:"zyn-projects-v1",theme:"zyn-theme-v1"};
+const defaults={
+ profile:{name:"Zaw Ye Naing",title:"Creative Portfolio",
+ intro:"မင်္ဂလာပါ။ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် Portfolio Website မှ ကြိုဆိုပါတယ်။",
+ about:"နည်းပညာနဲ့ Digital Content ဖန်တီးမှုတွေကို စိတ်ဝင်စားပါတယ်။",photo:""},
+ projects:[
+  {id:"p1",name:"Personal Portfolio",desc:"My personal portfolio website.",url:"https://github.com/"},
+  {id:"p2",name:"Creative Video",desc:"My digital content projects.",url:"https://www.youtube.com/"}
+ ],
+ theme:{name:"Neon Purple",bg:"#0c0916",accent:"#b875ff",card:"#211638"}
+};
+const themes=[
+ {name:"Neon Purple",bg:"#0c0916",accent:"#b875ff",card:"#211638"},
+ {name:"Premium Gold",bg:"#0b0b0b",accent:"#d6b56d",card:"#201b12"},
+ {name:"Royal Blue",bg:"#081321",accent:"#55aaff",card:"#14253a"},
+ {name:"Emerald",bg:"#071510",accent:"#43d9a3",card:"#12251d"},
+ {name:"Luxury Red",bg:"#160a10",accent:"#ff6687",card:"#2a1420"}
+];
+let data={profile:{...defaults.profile},projects:defaults.projects.map(p=>({...p})),theme:{...defaults.theme}};
+let selectedTheme={...data.theme};
 
-  const defaultTheme = {
-    name: "Neon Purple",
-    bg: "#10091B",
-    accent: "#B875FF",
-    card: "#21142F"
-  };
+function load(key,fallback){
+ try{const s=localStorage.getItem(key);return s?JSON.parse(s):fallback}
+ catch(e){return fallback}
+}
+function persist(key,value){
+ try{localStorage.setItem(key,JSON.stringify(value));return true}
+ catch(e){return false}
+}
+function validColor(s){return typeof s==="string"&&/^#[0-9a-f]{6}$/i.test(s)}
+function safeUrl(value){
+ try{
+  const u=new URL(value);
+  return ["http:","https:"].includes(u.protocol)?u.href:"";
+ }catch(e){return ""}
+}
+function text(tag,value,className){
+ const el=document.createElement(tag);
+ el.textContent=value;
+ if(className)el.className=className;
+ return el;
+}
+function notify(id,message){$(id).textContent=message}
+function showView(id){
+ document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
+ document.querySelectorAll(".navitem[data-go]").forEach(b=>b.classList.toggle("active",b.dataset.go===id));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
+$("previewBtn").addEventListener("click",()=>openPreview());
+$("homePreview").addEventListener("click",()=>openPreview());
 
-  const themes = [
-    {name:"Neon Purple", bg:"#10091B", accent:"#B875FF", card:"#21142F"},
-    {name:"Premium Gold", bg:"#090909", accent:"#D6B56D", card:"#191919"},
-    {name:"Royal Blue", bg:"#080E1C", accent:"#4DA3FF", card:"#141F32"},
-    {name:"Emerald", bg:"#071510", accent:"#43D9A3", card:"#12251D"},
-    {name:"Luxury Red", bg:"#140909", accent:"#FF6666", card:"#291414"}
-  ];
+function applyTheme(theme,save){
+ if(!validColor(theme.bg)||!validColor(theme.accent)||!validColor(theme.card))return false;
+ document.documentElement.style.setProperty("--bg",theme.bg);
+ document.documentElement.style.setProperty("--accent",theme.accent);
+ document.documentElement.style.setProperty("--card",theme.card);
+ document.documentElement.style.setProperty("--border",theme.accent+"55");
+ document.querySelector('meta[name="theme-color"]').content=theme.bg;
+ selectedTheme={...theme};
+ $("bgColor").value=theme.bg;$("accentColor").value=theme.accent;$("cardColor").value=theme.card;
+ $("themeLabel").textContent=theme.name||"Custom";
+ renderThemes();
+ if(save){
+  const ok=persist(KEYS.theme,selectedTheme);
+  notify("themeStatus",ok?"✓ Theme ကို ဒီ Browser မှာ သိမ်းပြီးပါပြီ။":"Storage ပြည့်နေခြင်းကြောင့် သိမ်းမရပါ။");
+ }
+ return true;
+}
+function renderThemes(){
+ const list=$("themeList");list.replaceChildren();
+ themes.forEach(t=>{
+  const b=text("button","","theme");
+  if(t.bg===selectedTheme.bg&&t.accent===selectedTheme.accent&&t.card===selectedTheme.card)b.classList.add("selected");
+  b.type="button";
+  const sw=text("div","","swatches");
+  [t.bg,t.accent,t.card].forEach(c=>{const s=text("span","","swatch");s.style.background=c;sw.appendChild(s)});
+  b.append(sw,text("strong",t.name),text("small",t.bg));
+  b.addEventListener("click",()=>applyTheme(t,false));
+  list.appendChild(b);
+ });
+}
+$("applyTheme").addEventListener("click",()=>{
+ const t={name:themes.find(x=>x.bg===$("bgColor").value&&x.accent===$("accentColor").value&&x.card===$("cardColor").value)?.name||"Custom Theme",
+ bg:$("bgColor").value,accent:$("accentColor").value,card:$("cardColor").value};
+ applyTheme(t,true);
+});
+["bgColor","accentColor","cardColor"].forEach(id=>$(id).addEventListener("input",()=>{
+ selectedTheme={name:"Custom Theme",bg:$("bgColor").value,accent:$("accentColor").value,card:$("cardColor").value};
+ applyTheme(selectedTheme,false);
+}));
+$("resetTheme").addEventListener("click",()=>applyTheme(defaults.theme,true));
 
-  let selectedTheme = {...defaultTheme};
+function renderProfile(){
+ const p=data.profile;
+ $("name").value=p.name;$("title").value=p.title;
+ $("intro").value=p.intro;$("about").value=p.about;$("photo").value=p.photo||"";
+ $("welcome").textContent="Welcome back, "+p.name+"!";
+ const avatar=$("avatar");avatar.replaceChildren();
+ const url=safeUrl(p.photo||"");
+ if(url){
+  const img=document.createElement("img");img.src=url;img.alt="Profile";
+  img.addEventListener("error",()=>{avatar.replaceChildren();avatar.textContent=(p.name||"Z").charAt(0).toUpperCase()});
+  avatar.appendChild(img);
+ }else avatar.textContent=(p.name||"Z").charAt(0).toUpperCase();
+}
+$("saveProfile").addEventListener("click",()=>{
+ const name=$("name").value.trim();
+ if(!name){notify("profileStatus","နာမည် ထည့်ပေးပါ။");return}
+ const p={name,title:$("title").value.trim(),intro:$("intro").value.trim(),
+ about:$("about").value.trim(),photo:safeUrl($("photo").value.trim())};
+ if($("photo").value.trim()&&!p.photo){notify("profileStatus","Image URL က http:// သို့မဟုတ် https:// နဲ့ စရပါမယ်။");return}
+ if(!persist(KEYS.profile,p)){notify("profileStatus","သိမ်းမရပါ။ Browser Storage ကို စစ်ပါ။");return}
+ data.profile=p;renderProfile();notify("profileStatus","✓ Profile သိမ်းပြီးပါပြီ။");
+});
 
-  function validHex(value) {
-    return /^#[0-9a-fA-F]{6}$/.test(value);
-  }
-
-  function contrastText(hex) {
-    const value = hex.replace("#", "");
-    const r = parseInt(value.slice(0,2),16);
-    const g = parseInt(value.slice(2,4),16);
-    const b = parseInt(value.slice(4,6),16);
-    return (r*299 + g*587 + b*114)/1000 > 150
-      ? "#10091B" : "#FFFFFF";
-  }
-
-  function applyColors(theme) {
-    const root = document.documentElement;
-    root.style.setProperty("--bg", theme.bg);
-    root.style.setProperty("--accent", theme.accent);
-    root.style.setProperty("--card", theme.card);
-    root.style.setProperty("--accent-text", contrastText(theme.accent));
-
-    // Derive readable borders from the selected accent color.
-    root.style.setProperty("--border", theme.accent + "55");
-
-    $("bgColor").value = theme.bg;
-    $("accentColor").value = theme.accent;
-    $("cardColor").value = theme.card;
-
-    document.querySelector('meta[name="theme-color"]')
-      .setAttribute("content", theme.bg);
-
-    selectedTheme = {...theme};
-    renderThemes();
-  }
-
-  function saveTheme(theme) {
-    try {
-      localStorage.setItem("zaw-portfolio-theme", JSON.stringify(theme));
-      $("themeStatus").textContent =
-        "✓ " + theme.name + " ကို ဒီ Browser မှာ သိမ်းပြီးပါပြီ။";
-    } catch (error) {
-      $("themeStatus").textContent =
-        "သိမ်းမရပါ။ Browser Storage Setting ကို စစ်ဆေးပါ။";
-    }
-  }
-
-  function renderThemes() {
-    const list = $("themeList");
-    list.replaceChildren();
-
-    themes.forEach(theme => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "theme-option" +
-        (selectedTheme.name === theme.name &&
-         selectedTheme.bg === theme.bg &&
-         selectedTheme.accent === theme.accent &&
-         selectedTheme.card === theme.card ? " selected" : "");
-
-      const swatches = document.createElement("div");
-      swatches.className = "swatches";
-
-      [theme.bg, theme.accent, theme.card].forEach(color => {
-        const swatch = document.createElement("span");
-        swatch.className = "swatch";
-        swatch.style.backgroundColor = color;
-        swatches.appendChild(swatch);
-      });
-
-      const title = document.createElement("strong");
-      title.textContent = theme.name;
-
-      const description = document.createElement("small");
-      description.textContent = theme.bg + " / " + theme.accent;
-
-      button.append(swatches, title, description);
-
-      button.addEventListener("click", () => {
-        selectedTheme = {...theme};
-        $("bgColor").value = theme.bg;
-        $("accentColor").value = theme.accent;
-        $("cardColor").value = theme.card;
-        renderThemes();
-      });
-
-      list.appendChild(button);
-    });
-  }
-
-  function readCustomColors() {
-    const bg = $("bgColor").value;
-    const accent = $("accentColor").value;
-    const card = $("cardColor").value;
-
-    if (![bg, accent, card].every(validHex)) {
-      $("themeStatus").textContent = "အရောင်ကုဒ် မမှန်ပါ။";
-      return null;
-    }
-
-    const preset = themes.find(t =>
-      t.bg === bg && t.accent === accent && t.card === card
-    );
-
-    return {
-      name: preset ? preset.name : "Custom Theme",
-      bg, accent, card
-    };
-  }
-
-  $("applyBtn").addEventListener("click", () => {
-    const theme = readCustomColors();
-    if (!theme) return;
-
-    applyColors(theme);
-    saveTheme(theme);
+function renderProjects(){
+ const list=$("projectList");list.replaceChildren();
+ $("projectCount").textContent=data.projects.length;
+ if(!data.projects.length){list.appendChild(text("p","Project မရှိသေးပါ။"));return}
+ data.projects.forEach(p=>{
+  const card=text("div","","card"),row=text("div","","project");
+  const icon=text("div","▣","projecticon"),info=text("div","","projectinfo");
+  info.append(text("h3",p.name),text("p",p.desc||"No description"));
+  row.append(icon,info);card.appendChild(row);
+  const actions=text("div","","projectactions");
+  const edit=text("button","✎ Edit","btn"),del=text("button","⌫ Delete","btn danger");
+  edit.type=del.type="button";
+  edit.addEventListener("click",()=>editProject(p.id));
+  del.addEventListener("click",()=>{
+   if(!confirm("ဒီ Project ကို ဖျက်မှာ သေချာပါသလား?"))return;
+   data.projects=data.projects.filter(x=>x.id!==p.id);
+   persist(KEYS.projects,data.projects);renderProjects();
+   notify("projectStatus","Project ဖျက်ပြီးပါပြီ။");
   });
+  if(safeUrl(p.url)){
+   const link=text("a","↗ Open","btn");link.href=safeUrl(p.url);link.target="_blank";link.rel="noopener noreferrer";
+   actions.append(edit,del,link);
+  }else actions.append(edit,del);
+  card.appendChild(actions);list.appendChild(card);
+ });
+}
+function resetProjectForm(){
+ $("projectId").value="";$("projectName").value="";
+ $("projectDesc").value="";$("projectUrl").value="";
+ $("formHeading").textContent="Add Project";notify("projectStatus","");
+ $("projectForm").classList.add("hidden");
+}
+function editProject(id){
+ const p=data.projects.find(x=>x.id===id);if(!p)return;
+ $("projectId").value=p.id;$("projectName").value=p.name;
+ $("projectDesc").value=p.desc;$("projectUrl").value=p.url||"";
+ $("formHeading").textContent="Edit Project";
+ $("projectForm").classList.remove("hidden");
+ $("projectForm").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function openProjectForm(){
+ resetProjectForm();$("projectForm").classList.remove("hidden");
+ $("projectForm").scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("addProject").addEventListener("click",openProjectForm);
+$("navAdd").addEventListener("click",()=>{showView("projects");openProjectForm()});
+$("cancelProject").addEventListener("click",resetProjectForm);
+$("saveProject").addEventListener("click",()=>{
+ const name=$("projectName").value.trim();
+ if(!name){notify("projectStatus","Project အမည် ထည့်ပေးပါ။");return}
+ const raw=$("projectUrl").value.trim(),url=safeUrl(raw);
+ if(raw&&!url){notify("projectStatus","URL မှန်ကန်စွာ ထည့်ပေးပါ။");return}
+ const id=$("projectId").value;
+ const p={id:id||("p"+Date.now()),name,desc:$("projectDesc").value.trim(),url};
+ const next=id?data.projects.map(x=>x.id===id?p:x):[p,...data.projects];
+ if(!persist(KEYS.projects,next)){notify("projectStatus","သိမ်းမရပါ။ Browser Storage ကို စစ်ပါ။");return}
+ data.projects=next;renderProjects();resetProjectForm();
+ notify("projectStatus","✓ Project သိမ်းပြီးပါပြီ။");
+});
 
-  $("resetBtn").addEventListener("click", () => {
-    applyColors(defaultTheme);
-    saveTheme(defaultTheme);
-  });
+function openPreview(){
+ const p=data.profile,t=selectedTheme,projects=data.projects;
+ const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const cards=projects.map(x=>`<article class="card"><h3>${esc(x.name)}</h3><p>${esc(x.desc)}</p>${safeUrl(x.url)?`<a href="${esc(safeUrl(x.url))}">View Project ↗</a>`:""}</article>`).join("");
+ const w=window.open("","_blank");
+ if(!w){alert("Preview ဖွင့်မရပါ။ Browser က pop-up ကို ခွင့်ပြုပါ။");return}
+ w.document.write(`<!DOCTYPE html><html lang="my"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(p.name)}</title><style>*{box-sizing:border-box}body{margin:0;background:${t.bg};color:#fff;font:16px Arial;line-height:1.7}header,main,footer{padding:22px;max-width:720px;margin:auto}header{border-bottom:1px solid ${t.accent}55;color:${t.accent}}h1,h2{line-height:1.3}h2,a{color:${t.accent}}p{color:#bdb3ca;overflow-wrap:anywhere}.card{padding:18px;background:${t.card};border:1px solid ${t.accent}44;border-radius:16px;margin:14px 0}a{overflow-wrap:anywhere}</style></head><body><header><b>${esc(p.name)}</b></header><main><h1>${esc(p.name)}</h1><h2>${esc(p.title)}</h2><p>${esc(p.intro)}</p><h2>About Me</h2><p>${esc(p.about)}</p><h2>Projects</h2>${cards||"<p>No projects yet.</p>"}</main><footer>© ${new Date().getFullYear()} ${esc(p.name)}</footer></body></html>`);
+ w.document.close();
+}
+$("exportData").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify({profile:data.profile,projects:data.projects,theme:selectedTheme},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="zaw-portfolio-backup.json";a.click();URL.revokeObjectURL(url);
+ notify("backupStatus","Backup Export လုပ်ပြီးပါပြီ။");
+});
+$("importData").addEventListener("click",()=>{
+ const file=$("importFile").files[0];if(!file){notify("backupStatus","JSON backup ဖိုင်ကို ရွေးပါ။");return}
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const x=JSON.parse(reader.result);
+   if(!x.profile||!Array.isArray(x.projects)||!x.theme||
+      typeof x.profile.name!=="string"||
+      !validColor(x.theme.bg)||!validColor(x.theme.accent)||!validColor(x.theme.card)||
+      !x.projects.every(p=>p&&typeof p.id==="string"&&typeof p.name==="string")){
+    throw Error("Invalid backup");
+   }
+   const profile={...defaults.profile,...x.profile};
+   if(!persist(KEYS.profile,profile)||!persist(KEYS.projects,x.projects)||!persist(KEYS.theme,x.theme))throw Error("Storage error");
+   data.profile=profile;data.projects=x.projects;renderProfile();renderProjects();applyTheme(x.theme,false);
+   notify("backupStatus","✓ Backup ပြန်သွင်းပြီးပါပြီ။");
+  }catch(e){notify("backupStatus","ဖိုင်မမှန်ပါ သို့မဟုတ် သိမ်းဆည်းမရပါ။")}
+ };
+ reader.readAsText(file);
+});
+$("clearData").addEventListener("click",()=>{
+ if(!confirm("Profile၊ Project နဲ့ Theme အားလုံးကို Default ပြန်ထားမှာ သေချာပါသလား?"))return;
+ data={profile:{...defaults.profile},projects:defaults.projects.map(p=>({...p})),theme:{...defaults.theme}};
+ persist(KEYS.profile,data.profile);persist(KEYS.projects,data.projects);persist(KEYS.theme,data.theme);
+ renderProfile();renderProjects();applyTheme(data.theme,false);
+ notify("backupStatus","Default Data ပြန်ထားပြီးပါပြီ။");
+});
 
-  // Keep custom color inputs reflected in the preview.
-  ["bgColor", "accentColor", "cardColor"].forEach(id => {
-    $(id).addEventListener("input", () => {
-      const theme = readCustomColors();
-      if (theme) {
-        selectedTheme = theme;
-        applyColors(theme);
-        $("themeStatus").textContent =
-          "Preview ပြောင်းထားသည်။ Apply Theme နှိပ်ပြီး သိမ်းပါ။";
-      }
-    });
-  });
-
-  function safeLoad(key) {
-    try {
-      const value = localStorage.getItem(key);
-      return value ? JSON.parse(value) : null;
-    } catch (error) {
-      return null;
-    }
-  }
-
-  const savedTheme = safeLoad("zaw-portfolio-theme");
-
-  if (savedTheme &&
-      validHex(savedTheme.bg) &&
-      validHex(savedTheme.accent) &&
-      validHex(savedTheme.card)) {
-    applyColors(savedTheme);
-  } else {
-    applyColors(defaultTheme);
-  }
-
-  // Admin panel navigation.
-  function openAdmin() {
-    $("portfolio").style.display = "none";
-    $("adminPanel").classList.add("open");
-    $("navLinks").classList.remove("open");
-    $("adminBtn").setAttribute("aria-expanded", "true");
-    window.scrollTo(0, 0);
-  }
-
-  function closeAdmin() {
-    $("adminPanel").classList.remove("open");
-    $("portfolio").style.display = "";
-    $("adminBtn").setAttribute("aria-expanded", "false");
-    window.scrollTo(0, 0);
-  }
-
-  $("adminBtn").addEventListener("click", () => {
-    if ($("adminPanel").classList.contains("open")) {
-      closeAdmin();
-    } else {
-      openAdmin();
-    }
-  });
-
-  $("closeAdminBtn").addEventListener("click", closeAdmin);
-
-  $("menuBtn").addEventListener("click", () => {
-    const open = $("navLinks").classList.toggle("open");
-    $("menuBtn").setAttribute("aria-expanded", String(open));
-    $("menuBtn").textContent = open ? "✕" : "☰";
-  });
-
-  $("navLinks").querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      $("navLinks").classList.remove("open");
-      $("menuBtn").setAttribute("aria-expanded", "false");
-      $("menuBtn").textContent = "☰";
-    });
-  });
-
-  $("brandLink").addEventListener("click", () => {
-    if ($("adminPanel").classList.contains("open")) closeAdmin();
-  });
-
-  // Editable profile fields.
-  function renderProfile(profile) {
-    $("heroName").textContent = profile.name;
-    $("footerName").textContent = profile.name;
-    $("heroTitle").textContent = profile.title;
-    $("heroIntro").textContent = profile.intro;
-    $("aboutText").textContent = profile.about;
-
-    $("nameInput").value = profile.name;
-    $("titleInput").value = profile.title;
-    $("introInput").value = profile.intro;
-    $("aboutInput").value = profile.about;
-  }
-
-  const defaultProfile = {
-    name: "Zaw Ye Naing",
-    title: "Creative Portfolio",
-    intro: "မင်္ဂလာပါ။ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် Website မှ ကြိုဆိုပါတယ်။",
-    about: "နည်းပညာ၊ Website Design နဲ့ Digital Content ဖန်တီးမှုတွေကို စိတ်ဝင်စားသူတစ်ယောက်ပါ။"
-  };
-
-  const savedProfile = safeLoad("zaw-portfolio-profile");
-  renderProfile(savedProfile && typeof savedProfile.name === "string"
-    ? {...defaultProfile, ...savedProfile}
-    : defaultProfile);
-
-  $("saveProfileBtn").addEventListener("click", () => {
-    const profile = {
-      name: $("nameInput").value.trim().slice(0,80),
-      title: $("titleInput").value.trim().slice(0,100),
-      intro: $("introInput").value.trim().slice(0,300),
-      about: $("aboutInput").value.trim().slice(0,300)
-    };
-
-    if (!profile.name) {
-      $("themeStatus").textContent = "နာမည် ထည့်ပေးပါ။";
-      return;
-    }
-
-    try {
-      localStorage.setItem("zaw-portfolio-profile", JSON.stringify(profile));
-      renderProfile(profile);
-      $("themeStatus").textContent =
-        "✓ Profile ကို Browser ထဲမှာ သိမ်းပြီးပါပြီ။";
-    } catch (error) {
-      $("themeStatus").textContent = "Profile သိမ်းမရပါ။";
-    }
-  });
-
-  $("year").textContent = new Date().getFullYear();
+data.profile=load(KEYS.profile,{...defaults.profile});
+data.projects=load(KEYS.projects,defaults.projects.map(p=>({...p})));
+const storedTheme=load(KEYS.theme,defaults.theme);
+if(!data.profile||typeof data.profile.name!=="string")data.profile={...defaults.profile};
+if(!Array.isArray(data.projects))data.projects=defaults.projects.map(p=>({...p}));
+renderProfile();renderProjects();applyTheme(storedTheme,false);
+})();
 </script>
-
 </body>
 </html>
